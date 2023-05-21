@@ -43,41 +43,5 @@ return {
                 enable = false
             },
         }
-
-        -- Mappings
-        local function opts(desc)
-            return { desc = desc, noremap = true, silent = true, nowait = true }
-        end
-
-        -- Navigation through hunks
-        vim.keymap.set('n', ']h', function()
-            if vim.wo.diff then
-                return "]c"
-            end
-            vim.schedule(function()
-                require("gitsigns").next_hunk()
-            end)
-            return "<Ignore>"
-        end, opts('Jump to next hunk'))
-        vim.keymap.set('n', '[h', function()
-            if vim.wo.diff then
-                return "[c"
-            end
-            vim.schedule(function()
-                require("gitsigns").prev_hunk()
-            end)
-            return "<Ignore>"
-        end, opts('Jump to prev hun'))
-
-        -- Actions
-        vim.keymap.set('n', '<leader>gr', function()
-            require("gitsigns").reset_hunk()
-        end, opts('Reset hunk'))
-        vim.keymap.set('n', '<leader>gp', function()
-            require("gitsigns").preview_hunk()
-        end, opts('Preview hunk'))
-        vim.keymap.set('n', '<leader>gb', function()
-            package.loaded.gitsigns.blame_line()
-        end, opts('Blame line'))
     end
 }

@@ -18,3 +18,6 @@ require("lazy").setup({
     require("plugins.gitsigns"),       -- Git diffs and more
     require("plugins.nvim-autopairs"), -- Autoclosing braces and html tags
 })
+
+require("mappings")
+
